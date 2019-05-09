@@ -6,12 +6,14 @@
 package jcarstore.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,12 +45,12 @@ public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_cliente")
     private Integer idCliente;
-    @Basic(optional = false)
     @Column(name = "cpf_cliente")
-    private int cpfCliente;
+    private Integer cpfCliente;
     @Basic(optional = false)
     @Column(name = "nome_cliente")
     private String nomeCliente;
@@ -66,7 +68,7 @@ public class Cliente implements Serializable {
     @Column(name = "senha_cliente")
     private String senhaCliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
-    private List<Venda> vendaList;
+    private Collection<Venda> vendaCollection;
 
     public Cliente() {
     }
@@ -75,9 +77,8 @@ public class Cliente implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Cliente(Integer idCliente, int cpfCliente, String nomeCliente, String emailCliente, String senhaCliente) {
+    public Cliente(Integer idCliente, String nomeCliente, String emailCliente, String senhaCliente) {
         this.idCliente = idCliente;
-        this.cpfCliente = cpfCliente;
         this.nomeCliente = nomeCliente;
         this.emailCliente = emailCliente;
         this.senhaCliente = senhaCliente;
@@ -91,11 +92,11 @@ public class Cliente implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public int getCpfCliente() {
+    public Integer getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(int cpfCliente) {
+    public void setCpfCliente(Integer cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 
@@ -148,12 +149,12 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public List<Venda> getVendaList() {
-        return vendaList;
+    public Collection<Venda> getVendaCollection() {
+        return vendaCollection;
     }
 
-    public void setVendaList(List<Venda> vendaList) {
-        this.vendaList = vendaList;
+    public void setVendaCollection(Collection<Venda> vendaCollection) {
+        this.vendaCollection = vendaCollection;
     }
 
     @Override

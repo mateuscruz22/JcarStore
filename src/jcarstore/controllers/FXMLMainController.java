@@ -5,12 +5,15 @@
  */
 package jcarstore.controllers;
 
+import jcarstore.dao.DBFrameworkController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javax.persistence.EntityManager;
+import jcarstore.models.Cliente;
 
 /**
  *
@@ -18,13 +21,31 @@ import javafx.scene.control.Label;
  */
 public class FXMLMainController implements Initializable {
     
+    private static EntityManager em;
+    
     @FXML
     private Label label;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        
+        DBFrameworkController db = new DBFrameworkController();
+        db.Connect("JcarStorePU");
+        
+        em = DBFrameworkController.getEntityManager();
+        
+        //TESTE: INSERE UM REGISTRO NO BANCO DE DADOS
+        Cliente cliente1 = new Cliente();
+        cliente1.setNomeCliente("Nome");
+        cliente1.setEmailCliente("email@email.com");
+        cliente1.setSenhaCliente("senha");
+        
+        em.getTransaction().begin();
+        em.persist(cliente1);
+        em.getTransaction().commit();
+        
+        System.out.println("Registro atualizado com sucesso!");
+        label.setText("Registro atualizado com sucesso!");
     }
     
     @Override
