@@ -13,7 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import jcarstore.dao.AdministradorDAO;
 import jcarstore.dao.ClienteDAO;
+import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
 
 /**
@@ -28,7 +30,7 @@ public class FXMLMainController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
 
-        Cliente cliente = new Cliente();
+        /*Cliente cliente = new Cliente();
         cliente.setCpfCliente(123456);
         cliente.setNomeCliente("Nome Teste");
         Calendar data = new GregorianCalendar();
@@ -44,8 +46,20 @@ public class FXMLMainController implements Initializable {
         Cliente retornoCliente = null;
         ClienteDAO dao = new ClienteDAO();
         //Salvar cliente
-        retornoCliente = dao.salvar(cliente);
+        retornoCliente = dao.salvar(cliente);*/
+        
+        
+        Administrador administrador = new Administrador();
+        administrador.setNomeAdministrador("SeuCuca");
+        administrador.setEmailAdministrador("seucuca@seucukeheu.com");
+        administrador.setSenhaAdministrador("cuca");
+        
 
+        Administrador retornoAdministrador = null;
+        AdministradorDAO dao = new AdministradorDAO();
+        retornoAdministrador = dao.salvar(administrador);
+        //Salvar cliente
+        
         //Buscar cliente
         //retornoCliente = dao.consultarPorId(22);
         
