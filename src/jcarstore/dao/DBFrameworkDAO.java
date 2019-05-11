@@ -13,11 +13,11 @@ import javax.persistence.Persistence;
  *
  * @author Mateus Araújo Cruz
  */
-public class DBFrameworkController {
+public class DBFrameworkDAO {
     
     private static EntityManager em;
 
-    public DBFrameworkController() {}
+    public DBFrameworkDAO() {}
     
     public void Connect(String persistenceName){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceName);
