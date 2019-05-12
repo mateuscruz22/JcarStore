@@ -15,8 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import jcarstore.dao.AdministradorDAO;
 import jcarstore.dao.ClienteDAO;
+import jcarstore.dao.VeiculoDAO;
 import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
+import jcarstore.models.Veiculo;
 
 /**
  *
@@ -45,8 +47,7 @@ public class FXMLMainController implements Initializable {
 
         Cliente retornoCliente = null;
         ClienteDAO dao = new ClienteDAO();
-        //Salvar cliente
-        retornoCliente = dao.salvar(cliente);*/
+        retornoCliente = dao.salvar(cliente);
         
         
         Administrador administrador = new Administrador();
@@ -57,14 +58,15 @@ public class FXMLMainController implements Initializable {
 
         Administrador retornoAdministrador = null;
         AdministradorDAO dao = new AdministradorDAO();
-        retornoAdministrador = dao.salvar(administrador);
-        //Salvar cliente
+        retornoAdministrador = dao.salvar(administrador);*/
         
-        //Buscar cliente
-        //retornoCliente = dao.consultarPorId(22);
+        Veiculo veiculo = new Veiculo();
+        veiculo.setModeloVeiculo("Fusca");
+        veiculo.setPrecoCusto(8000);
+        veiculo.setPrecoVenda(14000);
         
-        //Excluir cliente
-        //dao.excluir(62);
+        VeiculoDAO dao = new VeiculoDAO();
+        dao.salvar(veiculo);
         
         System.out.println("Registro atualizado com sucesso!");
         label.setText("Registro atualizado com sucesso!");
