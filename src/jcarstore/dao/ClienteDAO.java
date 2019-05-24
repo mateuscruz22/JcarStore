@@ -5,7 +5,10 @@
  */
 package jcarstore.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
 import jcarstore.models.Cliente;
 
@@ -13,9 +16,10 @@ import jcarstore.models.Cliente;
  *
  * @author Mateus Araújo Cruz
  */
-public class ClienteDAO {
+public class ClienteDAO implements IDAO<Cliente> {
 
-    public Cliente salvar(Cliente cliente) throws Exception {
+    @Override
+    public boolean insert(Cliente cliente) throws PersistenceException {
 
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
@@ -23,55 +27,98 @@ public class ClienteDAO {
 
         try {
             em.getTransaction().begin();
-            // Verifica se a pessoa ainda não está salva no banco de dados.
             if (cliente.getIdCliente() == null) {
-                //Salva os dados da pessoa.
                 em.persist(cliente);
             } else {
-                //Atualiza os dados da pessoa.
-                cliente = em.merge(cliente);
+                em.merge(cliente);
             }
-            // Finaliza a transação.
             em.getTransaction().commit();
-        } finally {
-            em.close();
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
         }
-        return cliente;
+
     }
 
-    public void excluir(int id) {
-        
+    @Override
+    public boolean remove(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean remove(Cliente cliente) throws PersistenceException {
+
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-        
+
         try {
-            // Inicia uma transação com o banco de dados.
             em.getTransaction().begin();
-            // Consulta a pessoa na base de dados através do seu ID.
-            Cliente cliente = em.find(Cliente.class, id);
-            // Remove a pessoa da base de dados.
-            em.remove(cliente);
-            // Finaliza a transação.
+            em.remove(em.find(Cliente.class, cliente.getIdCliente()));
             em.getTransaction().commit();
-        } finally {
             em.close();
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
         }
+
     }
 
-    public Cliente consultarPorId(int id) {
+    @Override
+    public boolean update(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Cliente cliente) {
         
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-        Cliente cliente = null;
-        
-        try {
-            //Consulta uma pessoa pelo seu ID.
-            cliente = em.find(Cliente.class, id);
-        } finally {
-            em.close();
-        }
-        return cliente;
+
+        em.getTransaction().begin();
+        em.merge(cliente);
+        em.getTransaction().commit();
+        em.close();
+
+        return true;
     }
+
+    @Override
+    public Cliente getObjectById(int id) {
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Cliente cliente = em.find(Cliente.class, id);
+            em.close();
+            return cliente;
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e);
+        } catch (Exception e) {
+            throw new PersistenceException(e);
+        }
+    }
+
+    @Override
+    public List<Cliente> getAll() {
+        
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+        
+        Query query = em.createQuery("SELECT c FROM Cliente c");
+        return (List<Cliente>) query.getResultList();
+    }
+
 }

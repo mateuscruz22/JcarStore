@@ -6,8 +6,10 @@
 package jcarstore.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +34,7 @@ public class FXMLMainController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
 
-        /*Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente();
         cliente.setCpfCliente(123456);
         cliente.setNomeCliente("Nome Teste");
         Calendar data = new GregorianCalendar();
@@ -44,32 +46,26 @@ public class FXMLMainController implements Initializable {
         cliente.setEnderecoCliente("Rua Cliente, 41");
         cliente.setEmailCliente("nome.teste@gmail.com");
         cliente.setSenhaCliente("**********");
-
-        Cliente retornoCliente = null;
+        
+        //LIST ALL
         ClienteDAO dao = new ClienteDAO();
-        retornoCliente = dao.salvar(cliente);
-        
-        
-        Administrador administrador = new Administrador();
-        administrador.setNomeAdministrador("SeuCuca");
-        administrador.setEmailAdministrador("seucuca@seucukeheu.com");
-        administrador.setSenhaAdministrador("cuca");
-        
+        List<Cliente> listaClientes = new ArrayList<Cliente>();
+        listaClientes = dao.getAll();
+        for (Cliente c : listaClientes) {
+            System.out.println(c.getNomeCliente());
+        }
 
-        Administrador retornoAdministrador = null;
-        AdministradorDAO dao = new AdministradorDAO();
-        retornoAdministrador = dao.salvar(administrador);*/
+        //UPDATE
+        /*ClienteDAO dao = new ClienteDAO();
+        Cliente updateCliente = dao.getObjectById(68);
+        updateCliente.setNomeCliente("Novo Nome");
         
-        Veiculo veiculo = new Veiculo();
-        veiculo.setModeloVeiculo("Fusca");
-        veiculo.setPrecoCusto(8000);
-        veiculo.setPrecoVenda(14000);
-        
-        VeiculoDAO dao = new VeiculoDAO();
-        dao.salvar(veiculo);
-        
-        System.out.println("Registro atualizado com sucesso!");
-        label.setText("Registro atualizado com sucesso!");
+        if (dao.update(updateCliente)) {
+            label.setText("Atualizado com sucesso!");
+        } else {
+            label.setText("Não foi possível atualizar!");
+        }*/
+
     }
 
     @Override
