@@ -5,7 +5,10 @@
  */
 package jcarstore.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
 import jcarstore.models.Veiculo;
 
@@ -13,11 +16,16 @@ import jcarstore.models.Veiculo;
  *
  * @author Luiz
  */
-public class VeiculoDAO {
+public class VeiculoDAO implements IDAO<Veiculo> {
     
     //Painel administrador: açoes sobre os veiculos
-    public Veiculo salvar(Veiculo veiculo) throws Exception {
-        DBFrameworkDAO db = new DBFrameworkDAO();
+    
+
+    
+
+    @Override
+    public boolean insert(Veiculo veiculo){ 
+              DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
@@ -29,17 +37,26 @@ public class VeiculoDAO {
                 em.persist(veiculo);
             } else {
                 //atualiza caso exita o veiculo
-                veiculo = em.merge(veiculo);
+                em.merge(veiculo);
             }
             em.getTransaction().commit();
-        } finally {
-            //acaba a transação com o banco de dados
-            em.close();
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
         }
-        return veiculo;
     }
 
-    public void excluir(int id) {
+    @Override
+    public boolean remove(int id) {
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean remove(Veiculo veiculo) {
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
@@ -47,25 +64,68 @@ public class VeiculoDAO {
         try {
             em.getTransaction().begin();
             //procura no banco de dados o veiculo para excluir
-            Veiculo veiculo = em.find(Veiculo.class, id);
+            em.find(Veiculo.class, veiculo.getIdVeiculo());
             //removo o veiculo
             em.remove(veiculo);
             em.getTransaction().commit();
-        } finally {
             em.close();
-        }
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
+        }    
     }
 
-    public Veiculo consultarPorId(int id) {
+    @Override
+    public boolean update(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Veiculo veiculo) {
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-        Veiculo veiculo = null;
+
+        em.getTransaction().begin();
+        em.merge(veiculo);
+        em.getTransaction().commit();
+        em.close();
+
+        return true;    }
+
+    @Override
+    public Veiculo getObjectById(int id) {
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
         try {
-            veiculo = em.find(Veiculo.class, id);
-        } finally {
+            Veiculo veiculo = em.find(Veiculo.class, id);
             em.close();
-        }
-        return veiculo;
+            return veiculo;
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e);
+        } catch (Exception e) {
+            throw new PersistenceException(e);
+        }    
     }
-}
+
+    @Override
+    public List<Veiculo> getAll() {
+         DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+        
+        Query query = em.createQuery("SELECT c FROM Veiculo c");
+        return (List<Veiculo>) query.getResultList();
+        }
+    }
+
+    
+
+    
+
