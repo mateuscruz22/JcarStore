@@ -17,11 +17,6 @@ import jcarstore.models.Veiculo;
  * @author Luiz
  */
 public class VeiculoDAO implements IDAO<Veiculo> {
-    
-    //Painel administrador: açoes sobre os veiculos
-    
-
-    
 
     @Override
     public boolean insert(Veiculo veiculo){ 
@@ -31,12 +26,9 @@ public class VeiculoDAO implements IDAO<Veiculo> {
 
         try {
             em.getTransaction().begin();
-            //como transação com o banco de dados
             if (veiculo.getIdVeiculo() == null) {
-                //insere caso nao exista o veiculo
                 em.persist(veiculo);
             } else {
-                //atualiza caso exita o veiculo
                 em.merge(veiculo);
             }
             em.getTransaction().commit();
@@ -52,7 +44,7 @@ public class VeiculoDAO implements IDAO<Veiculo> {
 
     @Override
     public boolean remove(int id) {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -63,9 +55,7 @@ public class VeiculoDAO implements IDAO<Veiculo> {
 
         try {
             em.getTransaction().begin();
-            //procura no banco de dados o veiculo para excluir
             em.find(Veiculo.class, veiculo.getIdVeiculo());
-            //removo o veiculo
             em.remove(veiculo);
             em.getTransaction().commit();
             em.close();
@@ -81,7 +71,7 @@ public class VeiculoDAO implements IDAO<Veiculo> {
 
     @Override
     public boolean update(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
