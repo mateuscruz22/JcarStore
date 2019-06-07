@@ -19,7 +19,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/FXMLMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_login.fxml"));
         
         Scene scene = new Scene(root);
         
