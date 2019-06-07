@@ -5,56 +5,121 @@
  */
 package jcarstore.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
 import jcarstore.models.Administrador;
-import jcarstore.models.Cliente;
 /**
  *
  * @author gig9
  */
-public class AdministradorDAO {
+public class AdministradorDAO implements IDAO<Administrador> {
+
+    @Override
+    public boolean insert(Administrador administrador) throws PersistenceException {
     
-    public Administrador salvar(Administrador administrador) throws Exception{
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
         try {
             em.getTransaction().begin();
-            // Verifica se a pessoa ainda não está salva no banco de dados.
             if (administrador.getIdAdministador()== null) {
-                //Salva os dados da pessoa.
                 em.persist(administrador);
             } else {
-                //Atualiza os dados da pessoa.
-                administrador = em.merge(administrador);
+                em.merge(administrador);
             }
-            // Finaliza a transação.
             em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-        return administrador;
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
+        }    
     }
-    public void excluir(int id) {
+
+    @Override
+    public boolean remove(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean remove(Administrador administrador) throws PersistenceException {
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.remove(em.find(Administrador.class, administrador.getIdAdministador()));
+            em.getTransaction().commit();
+            em.close();
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean update(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Administrador administrador) {
+        
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        em.getTransaction().begin();
+        em.merge(administrador);
+        em.getTransaction().commit();
+        em.close();
+
+        return true;
+    }
+
+    @Override
+    public Administrador getObjectById(int id) {
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Administrador administrador = em.find(Administrador.class, id);
+            em.close();
+            return administrador;
+        } catch (PersistenceException e) {
+            throw new PersistenceException(e);
+        } catch (Exception e) {
+            throw new PersistenceException(e);
+        }
+    }
+
+    @Override
+    public List<Administrador> getAll() {
         
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
         
-        try {
-            // Inicia uma transação com o banco de dados.
-            em.getTransaction().begin();
-            // Consulta a pessoa na base de dados através do seu ID.
-            Administrador administrador = em.find(Administrador.class, id);
-            // Remove a pessoa da base de dados.
-            em.remove(administrador);
-            // Finaliza a transação.
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
+        Query query = em.createQuery("SELECT c FROM Administrador c");
+        return (List<Administrador>) query.getResultList();
     }
+
+    
+    
     
 }
