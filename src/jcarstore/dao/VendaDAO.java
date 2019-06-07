@@ -10,26 +10,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
-import jcarstore.models.Administrador;
+import jcarstore.models.Venda;
+
 /**
  *
  * @author gig9
  */
-public class AdministradorDAO implements IDAO<Administrador> {
+public class VendaDAO implements IDAO<Venda> {
 
     @Override
-    public boolean insert(Administrador administrador) throws PersistenceException {
-    
+    public boolean insert(Venda venda) {
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-
+        
+        
         try {
             em.getTransaction().begin();
-            if (administrador.getIdAdministador()== null) {
-                em.persist(administrador);
+            if (venda.getIdVenda()== null) {
+                em.persist(venda);
             } else {
-                em.merge(administrador);
+                em.merge(venda);
             }
             em.getTransaction().commit();
             return true;
@@ -39,24 +40,26 @@ public class AdministradorDAO implements IDAO<Administrador> {
         } catch (Exception e) {
             System.out.println("Erro: " + e);
             return false;
-        }    
+        }
     }
 
     @Override
     public boolean remove(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean remove(Administrador administrador) throws PersistenceException {
-
+    public boolean remove(Venda venda) {
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
         try {
             em.getTransaction().begin();
-            em.remove(em.find(Administrador.class, administrador.getIdAdministador()));
+            //procura no banco de dados o veiculo para excluir
+            em.find(Venda.class, venda.getIdVenda());
+            //removo o veiculo
+            em.remove(venda);
             em.getTransaction().commit();
             em.close();
             return true;
@@ -66,8 +69,7 @@ public class AdministradorDAO implements IDAO<Administrador> {
         } catch (Exception e) {
             System.out.println("Erro: " + e);
             return false;
-        }
-
+        }   
     }
 
     @Override
@@ -76,50 +78,49 @@ public class AdministradorDAO implements IDAO<Administrador> {
     }
 
     @Override
-    public boolean update(Administrador administrador) {
-        
+    public boolean update(Venda venda) {
+    
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
         em.getTransaction().begin();
-        em.merge(administrador);
+        em.merge(venda);
         em.getTransaction().commit();
         em.close();
 
-        return true;
+        return true;    
     }
 
     @Override
-    public Administrador getObjectById(int id) {
-
+    public Venda getObjectById(int id) {
+    
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
         try {
-            Administrador administrador = em.find(Administrador.class, id);
+            Venda venda = em.find(Venda.class, id);
             em.close();
-            return administrador;
+            return venda;
         } catch (PersistenceException e) {
             throw new PersistenceException(e);
         } catch (Exception e) {
             throw new PersistenceException(e);
         }
     }
+    
 
     @Override
-    public List<Administrador> getAll() {
-        
+    public List<Venda> getAll() {
+    
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
         
-        Query query = em.createQuery("SELECT c FROM Administrador c");
-        return (List<Administrador>) query.getResultList();
+        Query query = em.createQuery("SELECT c FROM Venda c");
+        return (List<Venda>) query.getResultList();
+        
     }
-
-    
-    
     
 }
