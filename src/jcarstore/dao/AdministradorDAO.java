@@ -7,10 +7,12 @@ package jcarstore.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
 import jcarstore.models.Administrador;
+
 /**
  *
  * @author gig9
@@ -19,14 +21,14 @@ public class AdministradorDAO implements IDAO<Administrador> {
 
     @Override
     public boolean insert(Administrador administrador) throws PersistenceException {
-    
+
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
         try {
             em.getTransaction().begin();
-            if (administrador.getIdAdministador()== null) {
+            if (administrador.getIdAdministrador() == null) {
                 em.persist(administrador);
             } else {
                 em.merge(administrador);
@@ -39,7 +41,7 @@ public class AdministradorDAO implements IDAO<Administrador> {
         } catch (Exception e) {
             System.out.println("Erro: " + e);
             return false;
-        }    
+        }
     }
 
     @Override
@@ -56,7 +58,7 @@ public class AdministradorDAO implements IDAO<Administrador> {
 
         try {
             em.getTransaction().begin();
-            em.remove(em.find(Administrador.class, administrador.getIdAdministador()));
+            em.remove(em.find(Administrador.class, administrador.getIdAdministrador()));
             em.getTransaction().commit();
             em.close();
             return true;
@@ -77,7 +79,7 @@ public class AdministradorDAO implements IDAO<Administrador> {
 
     @Override
     public boolean update(Administrador administrador) {
-        
+
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
@@ -110,16 +112,29 @@ public class AdministradorDAO implements IDAO<Administrador> {
 
     @Override
     public List<Administrador> getAll() {
-        
+
         DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-        
-        Query query = em.createQuery("SELECT c FROM Administrador c");
+
+        Query query = em.createQuery("SELECT a FROM Administrador a");
         return (List<Administrador>) query.getResultList();
     }
 
-    
-    
-    
+    public Administrador getAdministrador(String email, String senha) {
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Administrador administrador = (Administrador) em.createQuery("SELECT a FROM Administrador a WHERE a.emailAdministrador = :email AND a.senhaAdministrador = :senha")
+                    .setParameter("email", email)
+                    .setParameter("senha", senha)
+                    .getSingleResult();
+            return administrador;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }

@@ -110,7 +110,7 @@ public class VeiculoDAO implements IDAO<Veiculo> {
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
         
-        Query query = em.createQuery("SELECT c FROM Veiculo c");
+        Query query = em.createQuery("SELECT v FROM Veiculo v");
         return (List<Veiculo>) query.getResultList();
         }
     }
