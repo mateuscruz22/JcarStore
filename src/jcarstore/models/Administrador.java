@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrador.findAll", query = "SELECT a FROM Administrador a")
-    , @NamedQuery(name = "Administrador.findByIdAdministador", query = "SELECT a FROM Administrador a WHERE a.idAdministador = :idAdministador")
+    , @NamedQuery(name = "Administrador.findByIdAdministrador", query = "SELECT a FROM Administrador a WHERE a.idAdministrador = :idAdministrador")
     , @NamedQuery(name = "Administrador.findByNomeAdministrador", query = "SELECT a FROM Administrador a WHERE a.nomeAdministrador = :nomeAdministrador")
     , @NamedQuery(name = "Administrador.findByEmailAdministrador", query = "SELECT a FROM Administrador a WHERE a.emailAdministrador = :emailAdministrador")
     , @NamedQuery(name = "Administrador.findBySenhaAdministrador", query = "SELECT a FROM Administrador a WHERE a.senhaAdministrador = :senhaAdministrador")})
@@ -34,38 +32,29 @@ public class Administrador implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_administador")
-    private Integer idAdministador;
+    @Column(name = "id_administrador")
+    private Integer idAdministrador;
     @Column(name = "nome_administrador")
     private String nomeAdministrador;
-    @Basic(optional = false)
     @Column(name = "email_administrador")
     private String emailAdministrador;
-    @Basic(optional = false)
     @Column(name = "senha_administrador")
     private String senhaAdministrador;
 
     public Administrador() {
     }
 
-    public Administrador(Integer idAdministador) {
-        this.idAdministador = idAdministador;
+    public Administrador(Integer idAdministrador) {
+        this.idAdministrador = idAdministrador;
     }
 
-    public Administrador(Integer idAdministador, String emailAdministrador, String senhaAdministrador) {
-        this.idAdministador = idAdministador;
-        this.emailAdministrador = emailAdministrador;
-        this.senhaAdministrador = senhaAdministrador;
+    public Integer getIdAdministrador() {
+        return idAdministrador;
     }
 
-    public Integer getIdAdministador() {
-        return idAdministador;
-    }
-
-    public void setIdAdministador(Integer idAdministador) {
-        this.idAdministador = idAdministador;
+    public void setIdAdministrador(Integer idAdministrador) {
+        this.idAdministrador = idAdministrador;
     }
 
     public String getNomeAdministrador() {
@@ -95,7 +84,7 @@ public class Administrador implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idAdministador != null ? idAdministador.hashCode() : 0);
+        hash += (idAdministrador != null ? idAdministrador.hashCode() : 0);
         return hash;
     }
 
@@ -106,7 +95,7 @@ public class Administrador implements Serializable {
             return false;
         }
         Administrador other = (Administrador) object;
-        if ((this.idAdministador == null && other.idAdministador != null) || (this.idAdministador != null && !this.idAdministador.equals(other.idAdministador))) {
+        if ((this.idAdministrador == null && other.idAdministrador != null) || (this.idAdministrador != null && !this.idAdministrador.equals(other.idAdministrador))) {
             return false;
         }
         return true;
@@ -114,7 +103,7 @@ public class Administrador implements Serializable {
 
     @Override
     public String toString() {
-        return "jcarstore.models.Administrador[ idAdministador=" + idAdministador + " ]";
+        return "jcarstore.models.Administrador[ idAdministrador=" + idAdministrador + " ]";
     }
     
 }

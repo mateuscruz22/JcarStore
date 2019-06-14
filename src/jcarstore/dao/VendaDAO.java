@@ -118,7 +118,7 @@ public class VendaDAO implements IDAO<Venda> {
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
         
-        Query query = em.createQuery("SELECT c FROM Venda c");
+        Query query = em.createQuery("SELECT v FROM Venda v");
         return (List<Venda>) query.getResultList();
         
     }
