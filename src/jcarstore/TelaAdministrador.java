@@ -6,25 +6,31 @@
 package jcarstore;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import static jcarstore.TelaLogin.setStage;
 
 /**
  *
  * @author Mateus Araújo Cruz
  */
-public class Main extends Application {
+public class TelaAdministrador extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_administrador.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**
