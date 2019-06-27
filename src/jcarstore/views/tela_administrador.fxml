@@ -60,7 +60,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="204.0" style="-fx-background-color: ff1e2e;">
                                  <children>
-                                    <Button fx:id="btnGerenciarVeiculos" mnemonicParsing="false" prefHeight="30.0" prefWidth="39.0" style="-fx-background-color: #c6010f; -fx-text-fill: white;">
+                                    <Button fx:id="btnGerenciarVeiculos" mnemonicParsing="false" onAction="#btnGerenciarVeiculosClick" prefHeight="30.0" prefWidth="39.0" style="-fx-background-color: #c6010f; -fx-text-fill: white;">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </HBox.margin>
@@ -83,14 +83,9 @@
                            <children>
                               <HBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Bem vindo ao sistema,">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Bem vindo ao sistema, admin" wrappingWidth="241.4970703125">
                                        <HBox.margin>
                                           <Insets />
-                                       </HBox.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="user">
-                                       <HBox.margin>
-                                          <Insets left="2.0" />
                                        </HBox.margin>
                                     </Text>
                                  </children>

@@ -22,7 +22,7 @@ public class TelaPainelDeControleCliente extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println("aqui");
+        
         Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/painel_controle_cliente.fxml"));
         
         Scene scene = new Scene(root);

@@ -49,9 +49,28 @@ public class TelaAdministradorController implements Initializable {
         pnlListarVendas.getChildren().setAll(pnl);
 
     }
+    
+    private void showListarVeiculos(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jcarstore/views/tela_gerenciar_veiculos.fxml"));
 
+        AnchorPane pnl = (AnchorPane) loader.load();
+
+        AnchorPane.setTopAnchor(pnl, 0.0);
+        AnchorPane.setLeftAnchor(pnl, 0.0);
+        AnchorPane.setRightAnchor(pnl, 0.0);
+        AnchorPane.setBottomAnchor(pnl, 0.0);
+
+        pnlListarVendas.getChildren().setAll(pnl);
+    }
+    
     @FXML
     private void btnGerenciarVendasClick(ActionEvent event) throws IOException {
         this.showListarVendas(event);
     }
+
+    @FXML
+    private void btnGerenciarVeiculosClick(ActionEvent event) throws IOException {
+        this.showListarVeiculos(event);
+    }
+    
 }
