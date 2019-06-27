@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="600.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaAlteraDadosClienteController">
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="476.0" prefWidth="200.0" style="-fx-background-color: #fe4451;" HBox.hgrow="ALWAYS" />
+                  <VBox prefHeight="474.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                      <children>
+                          <fx:include source="title_bar.fxml" />
+                      </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <StackPane.margin>
+                  <Insets bottom="45.0" left="45.0" right="45.0" top="45.0" />
+               </StackPane.margin>
+               <children>
+                  <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="490.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button fx:id="btnAltera" layoutX="155.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnAlteraDados" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Alterar dados" />
+                        <HBox alignment="TOP_RIGHT" layoutX="149.0" layoutY="63.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField fx:id="txtSenha" promptText="Nome completo" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontAwesomeIconView glyphName="USER" wrappingWidth="5.9114580154418945">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                           </children>
+                        </HBox>
+                        <Text layoutX="155.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #fe4451;" text="  Alterar Dados" wrappingWidth="226.35546875" />
+                        <HBox alignment="TOP_RIGHT" layoutX="151.0" layoutY="118.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField fx:id="txtFoto" promptText="Foto" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontAwesomeIconView glyphName="IMAGE" wrappingWidth="5.9114580154418945">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="151.0" layoutY="170.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField fx:id="txtFmail" promptText="E-mail" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontAwesomeIconView glyphName="ENVELOPE" wrappingWidth="5.9114580154418945">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="149.0" layoutY="225.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField fx:id="txtEndereco" promptText="Endereço" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontAwesomeIconView glyphName="HOME" wrappingWidth="5.9114580154418945">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

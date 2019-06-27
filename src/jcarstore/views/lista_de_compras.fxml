@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="655.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.Lista_de_comprasController">
+   <children>
+      <HBox prefHeight="76.0" prefWidth="655.0" style="-fx-background-color: #fe4451;" AnchorPane.bottomAnchor="362.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="200.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-text-fill: white;" text="Lista de Compras">
+               <HBox.margin>
+                  <Insets left="210.0" top="30.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <TableView fx:id="tableView" layoutY="68.0" prefHeight="318.0" prefWidth="655.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="columID" prefWidth="54.0" text="ID" />
+          <TableColumn fx:id="columModelo" prefWidth="104.0" text="Modelo" />
+            <TableColumn fx:id="columMarca" prefWidth="91.0" text="Marca" />
+            <TableColumn fx:id="columAno" prefWidth="74.0" text="Ano" />
+            <TableColumn fx:id="columDescricao" prefWidth="116.0" text="Descrição" />
+            <TableColumn fx:id="columPrecoVenda" prefWidth="105.0" text="Preço de Venda" />
+            <TableColumn fx:id="columFoto" prefWidth="108.0" text="Foto" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnComprar" layoutX="524.0" layoutY="399.0" mnemonicParsing="false" onAction="#ComprarVeiculo" prefHeight="25.0" prefWidth="107.0" text="Comprar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="524.0" AnchorPane.rightAnchor="24.0" />
+   </children>
+</AnchorPane>

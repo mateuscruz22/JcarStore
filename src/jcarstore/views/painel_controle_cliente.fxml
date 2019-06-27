@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="703.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaPainelDeControleCliente">
+   <children>
+      <StackPane prefHeight="361.0" prefWidth="546.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="550.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                      <children>
+                          <fx:include source="title_bar.fxml" />
+                      </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <BorderPane prefHeight="425.0" prefWidth="580.0">
+                     <left>
+                        <VBox prefHeight="380.0" prefWidth="221.0" style="-fx-background-color: #fe4451;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-fill: white;" text="Painel do Cliente" textAlignment="CENTER" wrappingWidth="202.13671875">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="204.0" style="-fx-background-color: #fe1526;">
+                                 <children>
+                                    <Button fx:id="btnListarVeiculos" mnemonicParsing="false" onAction="#show_listaVeliculo" prefHeight="30.0" prefWidth="39.0" style="-fx-background-color: #c6010f; -fx-text-fill: white;">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="TRUCK" style="-fx-font-size: 18px;" wrappingWidth="17.0" />
+                                       </graphic>
+                                    </Button>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-fill: white;" text="Listar Veiculo" wrappingWidth="150.712890625">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #fe1526;">
+                                 <children>
+                                    <Button fx:id="btnAlteraDados" mnemonicParsing="false" onAction="#show_alteraDados" prefHeight="30.0" prefWidth="39.0" style="-fx-background-color: #c6010f; -fx-text-fill: white;">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="DOLLAR" style="-fx-font-size: 18px;" text="" wrappingWidth="14.0" />
+                                       </graphic>
+                                    </Button>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-fill: white;" text="Alterar Dados" wrappingWidth="150.712890625" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </left>
+                     <center>
+                        <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
