@@ -7,9 +7,11 @@ package jcarstore.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
+import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
 
 /**
@@ -120,5 +122,38 @@ public class ClienteDAO implements IDAO<Cliente> {
         Query query = em.createQuery("SELECT c FROM Cliente c");
         return (List<Cliente>) query.getResultList();
     }
+    
+    public Cliente getCliente(String email, String senha) {
 
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Cliente cliente = (Cliente) em.createQuery("SELECT c FROM Cliente c WHERE c.emailCliente = :email AND c.senhaCliente = :senha")
+                    .setParameter("email", email)
+                    .setParameter("senha", senha)
+                    .getSingleResult();
+            return cliente;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+    public Cliente getObjectByEmail(String email) {
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Cliente cliente = (Cliente) em.createQuery("SELECT c FROM Cliente c WHERE c.emailCliente = :email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return cliente;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
 }

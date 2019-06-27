@@ -6,6 +6,7 @@
 package jcarstore;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,13 +16,13 @@ import javafx.stage.Stage;
  *
  * @author Mateus Araújo Cruz
  */
-public class TelaLogin extends Application {
-    
+public class TelaCadastroCliente extends Application{
+
     static Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_cadastro_cliente.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -46,5 +47,5 @@ public class TelaLogin extends Application {
     public static void setStage(Stage stage) {
         TelaLogin.stage = stage;
     }
-     
+    
 }

@@ -6,13 +6,9 @@
 package jcarstore;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import static jcarstore.TelaLogin.setStage;
 
@@ -29,6 +25,7 @@ public class TelaAdministrador extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        //stage.setMaximized(true);
         stage.show();
         setStage(stage);
     }

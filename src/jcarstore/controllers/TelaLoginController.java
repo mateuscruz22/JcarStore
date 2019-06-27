@@ -6,10 +6,6 @@
 package jcarstore.controllers;
 
 import java.net.URL;
-import java.security.Principal;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,10 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jcarstore.TelaLogin;
 import jcarstore.TelaAdministrador;
+import jcarstore.TelaCadastroCliente;
 import jcarstore.dao.AdministradorDAO;
 import jcarstore.dao.ClienteDAO;
 import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
+import jcarstore.models.Session;
 
 /**
  * FXML Controller class
@@ -46,6 +44,8 @@ public class TelaLoginController implements Initializable {
 
     Administrador administrador = new Administrador();
     AdministradorDAO administradorDAO = new AdministradorDAO();
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
 
     /**
      * Initializes the controller class.
@@ -60,7 +60,7 @@ public class TelaLoginController implements Initializable {
 
         this.administrador = this.administradorDAO.getAdministrador(this.txtUsuario.getText(), this.txtSenha.getText());
         if (this.administrador != null) {
-            this.txtMensagem.setText("Login realizado com sucesso!");
+            this.txtMensagem.setText("Login realizado com sucesso!");           
             TelaAdministrador telaAdministrador = new TelaAdministrador();
             TelaLogin.getStage().close();
             try {
@@ -72,6 +72,34 @@ public class TelaLoginController implements Initializable {
             this.txtMensagem.setText("Usuário ou senha incorretos.");
         }
         
+        this.cliente = this.clienteDAO.getCliente(this.txtUsuario.getText(), this.txtSenha.getText());
+        if (this.cliente != null) {
+            this.txtMensagem.setText("Login realizado com sucesso!");
+            
+            Session session = new Session();
+            
+            session.setSessionCliente(clienteDAO.getObjectByEmail(this.txtUsuario.getText()));
+           
+            //TelaPainelDeControleCliente telaPainelDeControleCliente = new TelaPainelDeControleCliente();
+            //TelaPainelDeControleCliente.getStage().close();
+            System.out.println("entrou na desgraca");
+            System.out.println("id: " + session.getSessionCliente().getNomeCliente());
+            try {
+                //telaPainelDeControleCliente.start(new Stage());
+            } catch (Exception e) {
+                Logger.getLogger(TelaLoginController.class.getName()).log(Level.SEVERE, null, e);
+            }
+        } else {
+            this.txtMensagem.setText("Usuário ou senha incorretos.");
+        }
+        
+    }
+
+    @FXML
+    private void btnCadastrarClick(ActionEvent event) throws Exception {
+        TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente();
+        TelaLogin.getStage().close();
+        telaCadastroCliente.start(new Stage());
     }
 
 }
