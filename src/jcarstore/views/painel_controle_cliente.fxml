@@ -31,7 +31,7 @@
                <children>
                   <BorderPane prefHeight="425.0" prefWidth="580.0">
                      <left>
-                        <VBox prefHeight="380.0" prefWidth="221.0" style="-fx-background-color: #fe4451;" BorderPane.alignment="CENTER">
+                        <VBox prefHeight="380.0" prefWidth="211.0" style="-fx-background-color: ff303e;" BorderPane.alignment="CENTER">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-fill: white;" text="Painel do Cliente" textAlignment="CENTER" wrappingWidth="202.13671875">
                                  <VBox.margin>
@@ -54,6 +54,9 @@
                                        </HBox.margin>
                                     </Text>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #fe1526;">
                                  <children>
