@@ -25,6 +25,7 @@ import jcarstore.dao.ClienteDAO;
 import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
 import jcarstore.models.Session;
+import jcarstore.TelaPainelDeControleCliente;
 
 /**
  * FXML Controller class
@@ -80,12 +81,10 @@ public class TelaLoginController implements Initializable {
             
             session.setSessionCliente(clienteDAO.getObjectByEmail(this.txtUsuario.getText()));
            
-            //TelaPainelDeControleCliente telaPainelDeControleCliente = new TelaPainelDeControleCliente();
-            //TelaPainelDeControleCliente.getStage().close();
-            System.out.println("entrou na desgraca");
-            System.out.println("id: " + session.getSessionCliente().getNomeCliente());
+            TelaPainelDeControleCliente telaPainelDeControleCliente = new TelaPainelDeControleCliente();
+            TelaLogin.getStage().close();
             try {
-                //telaPainelDeControleCliente.start(new Stage());
+                telaPainelDeControleCliente.start(new Stage());
             } catch (Exception e) {
                 Logger.getLogger(TelaLoginController.class.getName()).log(Level.SEVERE, null, e);
             }
