@@ -33,7 +33,7 @@ import jcarstore.models.Venda;
  *
  * @author Luiz
  */
-public class Lista_de_comprasController implements Initializable {
+public class TelaListaComprasController implements Initializable {
 
     @FXML
     private TableView<Veiculo> tableView;

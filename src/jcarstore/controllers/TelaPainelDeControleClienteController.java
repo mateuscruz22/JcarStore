@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Luiz
  */
-public class TelaPainelDeControleCliente implements Initializable {
+public class TelaPainelDeControleClienteController implements Initializable {
 
     @FXML
     private Button btnListarVeiculos;

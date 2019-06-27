@@ -52,8 +52,6 @@ public class TelaAdministradorController implements Initializable {
 
     @FXML
     private void btnGerenciarVendasClick(ActionEvent event) throws IOException {
-        //TelaGerenciarVendasController vendasController = new TelaGerenciarVendasController();
-        //vendasController.preencherTabela();
         this.showListarVendas(event);
     }
 }

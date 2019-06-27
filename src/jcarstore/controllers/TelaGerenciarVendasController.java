@@ -5,11 +5,8 @@
  */
 package jcarstore.controllers;
 
-import com.sun.media.jfxmedia.AudioClip;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,16 +36,12 @@ public class TelaGerenciarVendasController implements Initializable{
     @FXML
     private TableColumn<Venda, Float> lucroObtidoCol;
     
-    public void preencherTabela() {    
-        //tabela.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("idVenda"));
-//        VendaDAO vendaDAO = new VendaDAO();
-//        List<Venda> lista = vendaDAO.getAll();
-//        ObservableList<Venda> lst = FXCollections.observableArrayList(lista);
-//        tabela.setItems(lst);
-    }
-    
     public void iniciaTable(){
         idVendaCol.setCellValueFactory(new PropertyValueFactory("idVenda"));
+        nomeClienteCol.setCellValueFactory(new PropertyValueFactory("idCliente"));
+        modeloVeiculoCol.setCellValueFactory(new PropertyValueFactory("idVeiculo"));
+        dataVendaCol.setCellValueFactory(new PropertyValueFactory("dataVenda"));
+        lucroObtidoCol.setCellValueFactory(new PropertyValueFactory("lucroVenda"));
         tabela.setItems(atualizaTable());
     }
 

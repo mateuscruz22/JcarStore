@@ -11,7 +11,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import static jcarstore.dao.DBFrameworkDAO.getEntityManager;
-import jcarstore.models.Administrador;
 import jcarstore.models.Cliente;
 
 /**
