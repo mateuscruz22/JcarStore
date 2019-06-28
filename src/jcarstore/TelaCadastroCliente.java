@@ -45,7 +45,7 @@ public class TelaCadastroCliente extends Application{
     }
 
     public static void setStage(Stage stage) {
-        TelaLogin.stage = stage;
+        TelaCadastroCliente.stage = stage;
     }
     
 }

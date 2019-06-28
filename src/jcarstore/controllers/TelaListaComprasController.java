@@ -27,6 +27,7 @@ import jcarstore.dao.VeiculoDAO;
 import jcarstore.dao.VendaDAO;
 import jcarstore.models.Veiculo;
 import jcarstore.models.Venda;
+import jcarstore.models.Session;
 
 /**
  * FXML Controller class
@@ -55,7 +56,7 @@ public class TelaListaComprasController implements Initializable {
     private Button btnComprar;
     
    
-    private Venda selecionado;
+    private Veiculo selecionado;
     /**
      * Initializes the controller class.
      */
@@ -66,7 +67,7 @@ public class TelaListaComprasController implements Initializable {
         tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    selecionado = (Venda) newValue;
+                    selecionado = (Veiculo) newValue;
                     
                 } 
             });
@@ -92,21 +93,29 @@ public class TelaListaComprasController implements Initializable {
     @FXML
     private void ComprarVeiculo(ActionEvent event) {
             
-        Alert alert = new  Alert(AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setContentText("Deseja realmente comprar ?!");
+        Alert alert = new  Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Atenção");
+        alert.setContentText("Deseja realmente comprar?");
         ButtonType cancelButton = new ButtonType("Cancelar", ButtonData.CANCEL_CLOSE);
         ButtonType okButton = new ButtonType("OK");
         alert.getButtonTypes().setAll( cancelButton, okButton);
         
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get()== okButton){
-            
-            
-            System.out.println("tbm");
+            System.out.println(selecionado.getModeloVeiculo());
+            Venda venda = new Venda();
+            venda.setIdVeiculo(selecionado);
+            venda.setIdCliente(Session.getSessionCliente());
+            venda.setLucroVenda((float) (selecionado.getPrecoCusto()-selecionado.getPrecoVenda()));
             VendaDAO vendadao = new VendaDAO ();
-            vendadao.insert(selecionado);
+            vendadao.insert(venda);
             
+            Alert alert1 = new  Alert(AlertType.INFORMATION);
+            alert1.setTitle("Parabéns");
+            alert1.setHeaderText("Você acabou de comprar um carro!");
+            ButtonType aceitar = new ButtonType("Ok", ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(aceitar);
+            Optional<ButtonType> result1 = alert1.showAndWait();
             
            
         }
