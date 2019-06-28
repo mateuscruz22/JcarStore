@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import jcarstore.models.Session;
 
 /**
  * FXML Controller class
@@ -36,7 +37,7 @@ public class TelaPainelDeControleClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        System.out.println("cliente logado: " + Session.getSessionCliente().getNomeCliente());
     }    
 
     @FXML

@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import jcarstore.models.Session;
 
 /**
  *
@@ -32,7 +33,7 @@ public class TelaAdministradorController implements Initializable {
      */
 
     public void initialize(URL url, ResourceBundle rb) {
-        //TODO
+        // TODO
     }
 
     private void showListarVendas(ActionEvent event) throws IOException {

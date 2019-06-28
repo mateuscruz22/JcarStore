@@ -77,9 +77,7 @@ public class TelaLoginController implements Initializable {
         if (this.cliente != null) {
             this.txtMensagem.setText("Login realizado com sucesso!");
             
-            Session session = new Session();
-            
-            session.setSessionCliente(clienteDAO.getObjectByEmail(this.txtUsuario.getText()));
+            Session.setSessionCliente(clienteDAO.getObjectByEmail(this.txtUsuario.getText()));
            
             TelaPainelDeControleCliente telaPainelDeControleCliente = new TelaPainelDeControleCliente();
             TelaLogin.getStage().close();

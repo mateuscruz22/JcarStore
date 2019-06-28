@@ -11,14 +11,14 @@ package jcarstore.models;
  */
 public class Session {
     
-    Cliente sessionCliente;
+    public static Cliente sessionCliente;
 
-    public Cliente getSessionCliente() {
+    public static Cliente getSessionCliente() {
         return sessionCliente;
     }
 
-    public void setSessionCliente(Cliente sessionCliente) {
-        this.sessionCliente = sessionCliente;
+    public static void setSessionCliente(Cliente sessionCliente) {
+        Session.sessionCliente = sessionCliente;
     }
     
     
