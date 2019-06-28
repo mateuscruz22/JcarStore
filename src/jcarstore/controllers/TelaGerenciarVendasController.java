@@ -6,7 +6,6 @@
 package jcarstore.controllers;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
