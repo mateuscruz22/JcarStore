@@ -11,7 +11,7 @@ package jcarstore.models;
  */
 public class Session {
     
-    public static Cliente sessionCliente;
+    private static Cliente sessionCliente;
 
     public static Cliente getSessionCliente() {
         return sessionCliente;
