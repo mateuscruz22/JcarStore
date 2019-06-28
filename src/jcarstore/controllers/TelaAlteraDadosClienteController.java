@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import jcarstore.dao.ClienteDAO;
 import jcarstore.models.Cliente;
+import jcarstore.models.Session;
 
 /**
  * FXML Controller class
@@ -30,30 +31,47 @@ public class TelaAlteraDadosClienteController implements Initializable {
     @FXML
     private Button btnAltera;
     @FXML
-    private TextField txtFoto;
-    @FXML
     private AnchorPane anchorPane;
+  
+    Cliente cliente = new Cliente();
     @FXML
-    private TextField txtFmail;
+    private TextField txtEmail;
+    @FXML
+    private TextField txtNome;
 
     /**
-     * Initializes the controller class.
+     @FXML
+    private TextField txtEmail;
+    * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        txtEndereco.setText(Session.getSessionCliente().getNomeCliente());
+        txtSenha.setText(Session.getSessionCliente().getSenhaCliente());
+        txtEmail.setText(Session.getSessionCliente().getEmailCliente());
+        txtNome.setText(Session.getSessionCliente().getNomeCliente());
+        
         // TODO
     }    
 
+    
+    
+    
     @FXML
     private void btnAlteraDados(ActionEvent event) {
         
             Cliente cliente = new Cliente();
 
             cliente.setEnderecoCliente(txtEndereco.getText());
+            System.out.println("Cliente alterado " + cliente.getEnderecoCliente() );
             cliente.setSenhaCliente(txtSenha.getText());
-            cliente.setEmailCliente(txtFmail.getText());
-            cliente.setFotoCliente(txtFoto.getText());
+            cliente.setEmailCliente(txtEmail.getText());
+            cliente.setNomeCliente(txtNome.getText());
+            cliente.setIdCliente(Session.getSessionCliente().getIdCliente());
+            
+           
+            
 
             ClienteDAO clientedao = new ClienteDAO();
             clientedao.update(cliente);

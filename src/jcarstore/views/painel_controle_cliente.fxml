@@ -78,7 +78,10 @@
                         </VBox>
                      </left>
                      <center>
-                        <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text fx:id="txtBemVindo" layoutX="64.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-fill: black;" wrappingWidth="314.13671875" AnchorPane.bottomAnchor="353.9765625" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="146.86328125" AnchorPane.topAnchor="46.1015625" />
+                           </children></AnchorPane>
                      </center>
                   </BorderPane>
                </children>
