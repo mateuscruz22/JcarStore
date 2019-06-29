@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="703.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaPainelDeControleClienteController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaPainelDeControleClienteController">
    <children>
-      <StackPane prefHeight="361.0" prefWidth="546.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <HBox prefHeight="100.0" prefWidth="550.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                       <children>
@@ -29,9 +30,9 @@
             </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <BorderPane prefHeight="425.0" prefWidth="580.0">
+                  <BorderPane prefHeight="425.0" prefWidth="580.0" VBox.vgrow="ALWAYS">
                      <left>
-                        <VBox prefHeight="380.0" prefWidth="211.0" style="-fx-background-color: ff303e;" BorderPane.alignment="CENTER">
+                        <VBox alignment="TOP_CENTER" style="-fx-background-color: ff303e;" BorderPane.alignment="CENTER">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-fill: white;" text="Painel do Cliente" textAlignment="CENTER" wrappingWidth="202.13671875">
                                  <VBox.margin>
@@ -78,10 +79,26 @@
                         </VBox>
                      </left>
                      <center>
-                        <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Text fx:id="txtBemVindo" layoutX="64.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-fill: black;" wrappingWidth="314.13671875" AnchorPane.bottomAnchor="353.9765625" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="146.86328125" AnchorPane.topAnchor="46.1015625" />
-                           </children></AnchorPane>
+                              <HBox>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                                 <children>
+                                    <Label fx:id="lblMensagemEntrada" prefHeight="27.0" prefWidth="296.0" style="-fx-font-size: 18px;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <AnchorPane fx:id="anchorPane" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
                      </center>
                   </BorderPane>
                </children>

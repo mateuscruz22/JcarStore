@@ -7,23 +7,15 @@ package jcarstore.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import jcarstore.TelaCadastroVeiculo;
-import jcarstore.TelaEditarVeiculo;
 import jcarstore.dao.VeiculoDAO;
 import jcarstore.models.Veiculo;
-
 
 /**
  * FXML Controller class
@@ -48,18 +40,6 @@ public class TelaGerenciarVeiculosController implements Initializable {
     private TableColumn<Veiculo, Float> precoVendaCol;
     @FXML
     private TableView<Veiculo> tabela;
-    @FXML
-    private Button BtnCadastrar;
-    @FXML
-    private Button BtnAtualizar;
-    
-    private static Veiculo vSelecionado;
-
-    public static Veiculo getvSelecionado() {
-        return vSelecionado;
-    }
-
-    
 
     public void iniciaTable(){
         idVeiculoCol.setCellValueFactory(new PropertyValueFactory("idVenda"));
@@ -80,32 +60,6 @@ public class TelaGerenciarVeiculosController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iniciaTable();
-        
-        tabela.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    vSelecionado = (Veiculo) newValue;
-                    
-                } 
-            });
     }  
-
-    @FXML
-    private void BtnCadastrarClick(ActionEvent event) throws Exception {
-        TelaCadastroVeiculo telaCadastroVeiculo = new TelaCadastroVeiculo();
-        telaCadastroVeiculo.start(new Stage());
-    }
-
-    @FXML
-    private void BtnAtualizarClick(ActionEvent event) throws Exception {
-        TelaEditarVeiculo telaEditarVeiculo = new TelaEditarVeiculo();
-        telaEditarVeiculo.start(new Stage());
-        
-    }
-
-    @FXML
-    private void BtnAtualizartabelaClick(ActionEvent event) {
-        tabela.setItems(atualizaTable());
-    }
     
 }

@@ -2,34 +2,43 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="655.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaListaComprasController">
+<AnchorPane id="AnchorPane" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaListaComprasController">
    <children>
-      <HBox prefHeight="76.0" prefWidth="655.0" style="-fx-background-color: #fe4451;" AnchorPane.bottomAnchor="362.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label prefHeight="35.0" prefWidth="200.0" style="-fx-font-family: Quicksand; -fx-font-size: 2em; -fx-font-weight: bold; -fx-text-fill: white;" text="Lista de Compras">
-               <HBox.margin>
-                  <Insets left="210.0" top="30.0" />
-               </HBox.margin>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="655.0" style="-fx-background-color: #fe4451;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: white;" text="Lista de Compras" />
+               </children>
+            </HBox>
+            <TableView fx:id="tableView" prefHeight="346.0" prefWidth="655.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="columID" prefWidth="54.0" text="ID" />
+                <TableColumn fx:id="columModelo" prefWidth="104.0" text="Modelo" />
+                  <TableColumn fx:id="columMarca" prefWidth="91.0" text="Marca" />
+                  <TableColumn fx:id="columAno" prefWidth="74.0" text="Ano" />
+                  <TableColumn fx:id="columDescricao" prefWidth="116.0" text="Descrição" />
+                  <TableColumn fx:id="columPrecoVenda" prefWidth="120.0" text="Preço de Venda" />
+                  <TableColumn fx:id="columFoto" prefWidth="93.0" text="Foto" />
+              </columns>
+            </TableView>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnComprar" mnemonicParsing="false" onAction="#ComprarVeiculo" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Comprar">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
-      <TableView fx:id="tableView" layoutY="68.0" prefHeight="318.0" prefWidth="655.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <columns>
-          <TableColumn fx:id="columID" prefWidth="54.0" text="ID" />
-          <TableColumn fx:id="columModelo" prefWidth="104.0" text="Modelo" />
-            <TableColumn fx:id="columMarca" prefWidth="91.0" text="Marca" />
-            <TableColumn fx:id="columAno" prefWidth="74.0" text="Ano" />
-            <TableColumn fx:id="columDescricao" prefWidth="116.0" text="Descrição" />
-            <TableColumn fx:id="columPrecoVenda" prefWidth="105.0" text="Preço de Venda" />
-            <TableColumn fx:id="columFoto" prefWidth="108.0" text="Foto" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnComprar" layoutX="524.0" layoutY="399.0" mnemonicParsing="false" onAction="#ComprarVeiculo" prefHeight="25.0" prefWidth="107.0" text="Comprar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="524.0" AnchorPane.rightAnchor="24.0" />
+      </VBox>
    </children>
 </AnchorPane>

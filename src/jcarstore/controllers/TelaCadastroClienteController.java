@@ -6,21 +6,16 @@
 package jcarstore.controllers;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jcarstore.TelaCadastroCliente;
-import jcarstore.TelaCadastroVeiculo;
 import jcarstore.TelaLogin;
 import jcarstore.models.Cliente;
 import jcarstore.dao.ClienteDAO;
@@ -52,7 +47,7 @@ public class TelaCadastroClienteController implements Initializable{
     @FXML
     private Button btnCancelar;
     @FXML
-    private void btnEntrarClick(ActionEvent event) throws Exception {
+    private void btnEntrarClick(ActionEvent event) {
         Cliente cliente = new Cliente();
         cliente.setCpfCliente(Integer.valueOf(txtCpf.getText()));
         cliente.setNomeCliente(txtUsuario.getText());
@@ -63,25 +58,6 @@ public class TelaCadastroClienteController implements Initializable{
         cliente.setSenhaCliente(txtSenha.getText());
         ClienteDAO clienteDAO = new ClienteDAO();
         clienteDAO.insert(cliente);
-        
-        
-        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setHeaderText("Cadastro realizado com sucesso!");
-        ButtonType okButton = new ButtonType("OK");
-        alert.getButtonTypes().setAll( okButton);
-        
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get()== okButton){
-            
-            TelaLogin telaLogin = new TelaLogin();
-            TelaCadastroCliente.getStage().close();
-            System.out.println("FILHADA PUTA");
-            telaLogin.start(new Stage());
-            
-        }
-        
-        
         
     }
 

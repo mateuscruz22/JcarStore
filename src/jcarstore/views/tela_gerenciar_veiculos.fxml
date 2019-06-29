@@ -29,24 +29,14 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TableView>
-            <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="68.0" prefWidth="611.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="BtnAtualizar" mnemonicParsing="false" onAction="#BtnAtualizartabelaClick" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Atualizar tabela">
+                  <Button mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Cadastrar">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="BtnCadastrar" mnemonicParsing="false" onAction="#BtnCadastrarClick" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Cadastrar">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="BtnAtualizar" mnemonicParsing="false" onAction="#BtnAtualizarClick" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Alterar">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Deletar">
+                  <Button mnemonicParsing="false" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Atualizar">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

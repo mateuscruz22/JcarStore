@@ -19,8 +19,8 @@ import jcarstore.models.Veiculo;
 public class VeiculoDAO implements IDAO<Veiculo> {
 
     @Override
-    public boolean insert(Veiculo veiculo){ 
-              DBFrameworkDAO db = new DBFrameworkDAO();
+    public boolean insert(Veiculo veiculo) {
+        DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
 
@@ -44,7 +44,25 @@ public class VeiculoDAO implements IDAO<Veiculo> {
 
     @Override
     public boolean remove(int id) {
-       throw new UnsupportedOperationException("Not supported yet.");
+
+        DBFrameworkDAO db = new DBFrameworkDAO();
+        db.Connect("JcarStorePU");
+        EntityManager em = getEntityManager();
+
+        try {
+            Veiculo veiculo = em.find(Veiculo.class, id);
+            em.getTransaction().begin();
+            em.remove(veiculo);
+            em.getTransaction().commit();
+            return true;
+        } catch (PersistenceException e) {
+            System.out.println("Erro: " + e);
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+            return false;
+        }
+        
     }
 
     @Override
@@ -66,7 +84,7 @@ public class VeiculoDAO implements IDAO<Veiculo> {
         } catch (Exception e) {
             System.out.println("Erro: " + e);
             return false;
-        }    
+        }
     }
 
     @Override
@@ -85,7 +103,8 @@ public class VeiculoDAO implements IDAO<Veiculo> {
         em.getTransaction().commit();
         em.close();
 
-        return true;    }
+        return true;
+    }
 
     @Override
     public Veiculo getObjectById(int id) {
@@ -101,21 +120,16 @@ public class VeiculoDAO implements IDAO<Veiculo> {
             throw new PersistenceException(e);
         } catch (Exception e) {
             throw new PersistenceException(e);
-        }    
+        }
     }
 
     @Override
     public List<Veiculo> getAll() {
-         DBFrameworkDAO db = new DBFrameworkDAO();
+        DBFrameworkDAO db = new DBFrameworkDAO();
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
-        
+
         Query query = em.createQuery("SELECT v FROM Veiculo v");
         return (List<Veiculo>) query.getResultList();
-        }
     }
-
-    
-
-    
-
+}
