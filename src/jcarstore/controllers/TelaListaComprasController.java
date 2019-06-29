@@ -68,6 +68,7 @@ public class TelaListaComprasController implements Initializable {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     selecionado = (Veiculo) newValue;
+                    
                 } 
             });
     }    
@@ -78,7 +79,7 @@ public class TelaListaComprasController implements Initializable {
         columMarca.setCellValueFactory(new PropertyValueFactory("marcaVeiculo"));
         columAno.setCellValueFactory(new PropertyValueFactory("anoVeiculo"));
         columDescricao.setCellValueFactory(new PropertyValueFactory("descricaoVeiculo"));
-        columPrecoVenda.setCellValueFactory(new PropertyValueFactory("precoVenda"));
+        columPrecoVenda.setCellValueFactory(new PropertyValueFactory("precoVendaVeiculo"));
         columFoto.setCellValueFactory(new PropertyValueFactory("fotoVeiculo"));
         tableView.setItems(atualizaTable());
     
@@ -101,10 +102,11 @@ public class TelaListaComprasController implements Initializable {
         
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get()== okButton){
+            System.out.println(selecionado.getModeloVeiculo());
             Venda venda = new Venda();
             venda.setIdVeiculo(selecionado);
             venda.setIdCliente(Session.getSessionCliente());
-            venda.setLucroVenda((float) (selecionado.getPrecoVenda()-selecionado.getPrecoCusto()));
+            venda.setLucroVenda((float) (selecionado.getPrecoCusto()-selecionado.getPrecoVenda()));
             VendaDAO vendadao = new VendaDAO ();
             vendadao.insert(venda);
             

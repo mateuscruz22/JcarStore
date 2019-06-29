@@ -3,7 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -13,35 +12,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="573.0" prefWidth="600.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaAlteraDadosClienteController">
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="600.0" style="-fx-background-color: transparent;" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jcarstore.controllers.TelaAlteraDadosClienteController">
    <children>
-      <StackPane layoutY="-34.0" prefHeight="417.0" prefWidth="580.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <VBox alignment="CENTER" prefHeight="328.0" prefWidth="490.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="476.0" prefWidth="200.0" style="-fx-background-color: #fe4451;" HBox.hgrow="ALWAYS" />
+                  <VBox prefHeight="474.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                      <children>
+                          <fx:include source="title_bar.fxml" />
+                      </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <StackPane.margin>
                   <Insets bottom="45.0" left="45.0" right="45.0" top="45.0" />
                </StackPane.margin>
                <children>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="514.0" prefWidth="379.0" style="-fx-background-color: white;">
-                     <effect>
-                        <DropShadow />
-                     </effect>
+                  <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="490.0" style="-fx-background-color: white;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #fe4451;" text="Alterar Dados" />
-                        <Label fx:id="txtMensagem" alignment="TOP_CENTER" textFill="RED">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding>
-                        </Label>
-                        <HBox alignment="TOP_RIGHT" maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                        <Button fx:id="btnAltera" layoutX="155.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnAlteraDados" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Alterar dados" />
+                        <HBox alignment="TOP_RIGHT" layoutX="149.0" layoutY="63.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
-                              <TextField fx:id="txtNome" promptText="Nome" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="txtNome" promptText="Nome completo" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -52,28 +50,9 @@
                                  </HBox.margin>
                               </FontAwesomeIconView>
                            </children>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
                         </HBox>
-                        <HBox alignment="TOP_RIGHT" maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
-                           <children>
-                              <TextField fx:id="txtEndereco" promptText="Endereço" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <FontAwesomeIconView glyphName="HOME" wrappingWidth="5.9114580154418945">
-                                 <HBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </FontAwesomeIconView>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                        <Text layoutX="155.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-family: Quicksand; -fx-font-weight: bold; -fx-fill: #fe4451;" text="  Alterar Dados" wrappingWidth="226.35546875" />
+                        <HBox alignment="TOP_RIGHT" layoutX="151.0" layoutY="170.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
                               <TextField fx:id="txtEmail" promptText="E-mail" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
@@ -86,11 +65,22 @@
                                  </HBox.margin>
                               </FontAwesomeIconView>
                            </children>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
                         </HBox>
-                        <HBox alignment="TOP_RIGHT" maxWidth="-Infinity" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                        <HBox alignment="TOP_RIGHT" layoutX="149.0" layoutY="225.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
+                           <children>
+                              <TextField fx:id="txtEndereco" promptText="Endereço" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontAwesomeIconView glyphName="HOME" wrappingWidth="5.9114580154418945">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="149.0" layoutY="118.0" maxWidth="-Infinity" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #a2a2a2; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
                               <PasswordField fx:id="txtSenha" promptText="Senha" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
@@ -103,20 +93,9 @@
                                  </HBox.margin>
                               </FontAwesomeIconView>
                            </children>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
                         </HBox>
-                        <Button fx:id="btnAltera" mnemonicParsing="false" onAction="#btnAlterarDados" prefWidth="180.0" style="-fx-background-color: #ff3b49; -fx-background-radius: 100px; -fx-text-fill: white;" text="Alterar Dados">
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                        </Button>
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
+                  </AnchorPane>
                </children>
             </VBox>
          </children>

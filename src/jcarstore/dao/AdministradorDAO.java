@@ -46,23 +46,7 @@ public class AdministradorDAO implements IDAO<Administrador> {
 
     @Override
     public boolean remove(int id) {
-        DBFrameworkDAO db = new DBFrameworkDAO();
-        db.Connect("JcarStorePU");
-        EntityManager em = getEntityManager();
-
-        try {
-            Administrador administrador = em.find(Administrador.class, id);
-            em.getTransaction().begin();
-            em.remove(administrador);
-            em.getTransaction().commit();
-            return true;
-        } catch (PersistenceException e) {
-            System.out.println("Erro: " + e);
-            return false;
-        } catch (Exception e) {
-            System.out.println("Erro: " + e);
-            return false;
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

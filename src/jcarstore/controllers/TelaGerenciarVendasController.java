@@ -6,25 +6,15 @@
 package jcarstore.controllers;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import jcarstore.dao.VeiculoDAO;
 import jcarstore.dao.VendaDAO;
-import jcarstore.models.Veiculo;
 import jcarstore.models.Venda;
 
 /**
@@ -45,10 +35,6 @@ public class TelaGerenciarVendasController implements Initializable{
     private TableColumn<Venda, String> dataVendaCol;
     @FXML
     private TableColumn<Venda, Float> lucroObtidoCol;
-    @FXML
-    private Button btnDeletar;
-    
-    private Venda selecionado;
     
     public void iniciaTable(){
         idVendaCol.setCellValueFactory(new PropertyValueFactory("idVenda"));
@@ -67,34 +53,6 @@ public class TelaGerenciarVendasController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iniciaTable();
-        
-        tabela.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    selecionado = (Venda) newValue;
-                    
-                } 
-            });
-    }
-
-    @FXML
-    private void showDeletarVenda(ActionEvent event) {
-        Alert alert = new  Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Atenção");
-        alert.setContentText("Deseja realmente deletar ?");
-        ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-        ButtonType okButton = new ButtonType("OK");
-        alert.getButtonTypes().setAll( cancelButton, okButton);
-        Optional<ButtonType> result = alert.showAndWait();
-        
-        if(result.get() == okButton){
-            if(selecionado != null){
-                VendaDAO vendaDAO = new VendaDAO();
-                vendaDAO.remove(selecionado.getIdVenda());
-                tabela.setItems(atualizaTable());
-            }
-            
-        }
     }
     
 }

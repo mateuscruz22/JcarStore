@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import jcarstore.dao.ClienteDAO;
@@ -39,8 +38,6 @@ public class TelaAlteraDadosClienteController implements Initializable {
     private TextField txtEmail;
     @FXML
     private TextField txtNome;
-    @FXML
-    private Label txtMensagem;
 
     /**
      @FXML
@@ -61,6 +58,7 @@ public class TelaAlteraDadosClienteController implements Initializable {
     
     
     
+    @FXML
     private void btnAlteraDados(ActionEvent event) {
         
             Cliente cliente = new Cliente();
@@ -79,10 +77,6 @@ public class TelaAlteraDadosClienteController implements Initializable {
             clientedao.update(cliente);
         
         }
-
-    @FXML
-    private void btnAlterarDados(ActionEvent event) {
-    }
     
        
 }

@@ -45,24 +45,7 @@ public class VendaDAO implements IDAO<Venda> {
 
     @Override
     public boolean remove(int id) {
-        
-        DBFrameworkDAO db = new DBFrameworkDAO();
-        db.Connect("JcarStorePU");
-        EntityManager em = getEntityManager();
-
-        try {
-            Venda venda = em.find(Venda.class, id);
-            em.getTransaction().begin();
-            em.remove(venda);
-            em.getTransaction().commit();
-            return true;
-        } catch (PersistenceException e) {
-            System.out.println("Erro: " + e);
-            return false;
-        } catch (Exception e) {
-            System.out.println("Erro: " + e);
-            return false;
-        }
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -135,9 +118,7 @@ public class VendaDAO implements IDAO<Venda> {
         db.Connect("JcarStorePU");
         EntityManager em = getEntityManager();
         
-        //Query query = em.createQuery("SELECT v.idVenda AS idVenda, c.nomeCliente FROM Venda v INNER JOIN Cliente c");
         Query query = em.createQuery("SELECT v FROM Venda v");
-
         return (List<Venda>) query.getResultList();
         
     }
