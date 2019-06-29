@@ -26,7 +26,6 @@ public class TelaAdministrador extends Application {
         
         stage.setScene(scene);
         stage.setMaximized(true);
-        //stage.setMaximized(true);
         stage.show();
         setStage(stage);
     }
