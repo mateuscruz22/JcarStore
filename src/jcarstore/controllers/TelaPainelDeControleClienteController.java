@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import jcarstore.models.Session;
@@ -31,9 +30,8 @@ public class TelaPainelDeControleClienteController implements Initializable {
     private Button btnAlteraDados;
     @FXML
     private AnchorPane anchorPane;
-    private Text txtBemVindo;
     @FXML
-    private Label lblMensagemEntrada;
+    private Text txtBemVindo;
 
     /**
      * Initializes the controller class.
@@ -42,7 +40,8 @@ public class TelaPainelDeControleClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblMensagemEntrada.setText("Bem Vindo ao JcarStore, " + Session.getSessionCliente().getNomeCliente());
+        
+        txtBemVindo.setText("Bem Vindo ao JcarStore " + Session.getSessionCliente().getNomeCliente());
     }    
 
     @FXML

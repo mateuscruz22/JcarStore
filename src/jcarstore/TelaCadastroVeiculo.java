@@ -4,31 +4,27 @@
  * and open the template in the editor.
  */
 package jcarstore;
-
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 /**
  *
- * @author Mateus Araújo Cruz
+ * @author gig9
  */
-public class TelaCadastroCliente extends Application{
-
+public class TelaCadastroVeiculo extends  Application{
     static Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_cadastro_cliente.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_cadastrar_veiculo.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         //
-        stage.setMaximized(true);
         stage.show();
         setStage(stage);
     }
@@ -45,7 +41,7 @@ public class TelaCadastroCliente extends Application{
     }
 
     public static void setStage(Stage stage) {
-        TelaCadastroCliente.stage = stage;
+        TelaCadastroVeiculo.stage = stage;
     }
     
 }
