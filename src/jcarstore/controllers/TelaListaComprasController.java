@@ -55,7 +55,7 @@ public class TelaListaComprasController implements Initializable {
     @FXML
     private Button btnComprar;
     
-   
+    
     private Veiculo selecionado;
     /**
      * Initializes the controller class.

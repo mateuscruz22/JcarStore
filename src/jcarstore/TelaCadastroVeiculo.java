@@ -4,38 +4,44 @@
  * and open the template in the editor.
  */
 package jcarstore;
-
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import static jcarstore.TelaLogin.setStage;
-
 /**
  *
- * @author Mateus Araújo Cruz
+ * @author gig9
  */
-public class TelaAdministrador extends Application {
+public class TelaCadastroVeiculo extends  Application{
+    static Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_administrador.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/jcarstore/views/tela_cadastrar_veiculo.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setMaximized(true);
-        //stage.setMaximized(true);
+        //
         stage.show();
         setStage(stage);
     }
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        TelaCadastroVeiculo.stage = stage;
     }
     
 }
