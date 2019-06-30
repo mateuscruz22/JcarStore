@@ -62,13 +62,13 @@ public class TelaGerenciarVeiculosController implements Initializable {
     
 
     public void iniciaTable(){
-        idVeiculoCol.setCellValueFactory(new PropertyValueFactory("idVenda"));
-        modeloCol.setCellValueFactory(new PropertyValueFactory("idCliente"));
-        marcaCol.setCellValueFactory(new PropertyValueFactory("idVeiculo"));
-        anoCol.setCellValueFactory(new PropertyValueFactory("dataVenda"));
-        descricaoCol.setCellValueFactory(new PropertyValueFactory("lucroVenda"));
-        precoCustoCol.setCellValueFactory(new PropertyValueFactory("dataVenda"));
-        precoVendaCol.setCellValueFactory(new PropertyValueFactory("lucroVenda"));
+        idVeiculoCol.setCellValueFactory(new PropertyValueFactory("idVeiculo"));
+        modeloCol.setCellValueFactory(new PropertyValueFactory("modeloVeiculo"));
+        marcaCol.setCellValueFactory(new PropertyValueFactory("marcaVeiculo"));
+        anoCol.setCellValueFactory(new PropertyValueFactory("anoVeiculo"));
+        descricaoCol.setCellValueFactory(new PropertyValueFactory("descricaoVeiculo"));
+        precoCustoCol.setCellValueFactory(new PropertyValueFactory("precoCusto"));
+        precoVendaCol.setCellValueFactory(new PropertyValueFactory("precoVenda"));
         tabela.setItems(atualizaTable());
     }
 
