@@ -50,7 +50,7 @@ public class Cliente implements Serializable {
     @Column(name = "id_cliente")
     private Integer idCliente;
     @Column(name = "cpf_cliente")
-    private Integer cpfCliente;
+    private String cpfCliente;
     @Basic(optional = false)
     @Column(name = "nome_cliente")
     private String nomeCliente;
@@ -92,11 +92,11 @@ public class Cliente implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Integer getCpfCliente() {
+    public String getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(Integer cpfCliente) {
+    public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 

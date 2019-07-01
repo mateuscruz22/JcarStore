@@ -54,7 +54,7 @@ public class TelaCadastroClienteController implements Initializable{
     @FXML
     private void btnEntrarClick(ActionEvent event) throws Exception {
         Cliente cliente = new Cliente();
-        cliente.setCpfCliente(Integer.valueOf(txtCpf.getText()));
+        cliente.setCpfCliente(txtCpf.getText());
         cliente.setNomeCliente(txtUsuario.getText());
         //cliente.setNascimentoCliente(txtDatanasc.getText()); //colocar data de nascimento como string
         cliente.setFotoCliente(txtFoto.getText());
