@@ -76,7 +76,6 @@ public class TelaCadastroClienteController implements Initializable{
             
             TelaLogin telaLogin = new TelaLogin();
             TelaCadastroCliente.getStage().close();
-            System.out.println("FILHADA PUTA");
             telaLogin.start(new Stage());
             
         }
