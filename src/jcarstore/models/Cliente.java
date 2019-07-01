@@ -6,6 +6,7 @@
 package jcarstore.models;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
