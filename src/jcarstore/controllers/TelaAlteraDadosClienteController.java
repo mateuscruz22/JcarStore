@@ -6,11 +6,15 @@
 package jcarstore.controllers;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -49,22 +53,27 @@ public class TelaAlteraDadosClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = new Cliente();
+        cliente=clienteDAO.getObjectById(Session.getSessionCliente().getIdCliente());
+        //puxar o dados do session é burrice pq ele nao atualiza, eu nao ia ficar fazendo método set pra ele
+        //era muito mais fácil deixar o session como inteiro em vez do objeto todo .. fazer igual a linha 58, chamando apenas o id
         
-        txtEndereco.setText(Session.getSessionCliente().getNomeCliente());
-        txtSenha.setText(Session.getSessionCliente().getSenhaCliente());
-        txtEmail.setText(Session.getSessionCliente().getEmailCliente());
-        txtNome.setText(Session.getSessionCliente().getNomeCliente());
+        txtEndereco.setText(cliente.getEnderecoCliente()); 
+        txtSenha.setText(cliente.getSenhaCliente());
+        txtEmail.setText(cliente.getEmailCliente());
+        txtNome.setText(cliente.getNomeCliente());
         
         // TODO
     }    
 
     
     
-    
-    private void btnAlteraDados(ActionEvent event) {
-        
-            Cliente cliente = new Cliente();
 
+    @FXML
+    private void btnAlterarDados(ActionEvent event) {
+            Cliente cliente = new Cliente();
+            
             cliente.setEnderecoCliente(txtEndereco.getText());
             System.out.println("Cliente alterado " + cliente.getEnderecoCliente() );
             cliente.setSenhaCliente(txtSenha.getText());
@@ -77,11 +86,17 @@ public class TelaAlteraDadosClienteController implements Initializable {
 
             ClienteDAO clientedao = new ClienteDAO();
             clientedao.update(cliente);
-        
-        }
+            Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText("Cadastro atualizado com sucesso!");
+            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll( okButton);
 
-    @FXML
-    private void btnAlterarDados(ActionEvent event) {
+            Optional<ButtonType> result = alert.showAndWait();
+            
+            
+            
+        
     }
     
        

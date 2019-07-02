@@ -6,6 +6,13 @@
 package jcarstore.controllers;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,7 +27,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jcarstore.TelaCadastroCliente;
-import jcarstore.TelaCadastroVeiculo;
 import jcarstore.TelaLogin;
 import jcarstore.models.Cliente;
 import jcarstore.dao.ClienteDAO;
@@ -30,7 +36,7 @@ import jcarstore.dao.ClienteDAO;
  * @author gig9
  */
 public class TelaCadastroClienteController implements Initializable{
-
+    
     @FXML
     private Label txtMensagem;
     @FXML
@@ -54,37 +60,64 @@ public class TelaCadastroClienteController implements Initializable{
     @FXML
     private void btnEntrarClick(ActionEvent event) throws Exception {
         Cliente cliente = new Cliente();
-        cliente.setCpfCliente(Integer.valueOf(txtCpf.getText()));
+        cliente.setCpfCliente(txtCpf.getText());
         cliente.setNomeCliente(txtUsuario.getText());
-        //cliente.setNascimentoCliente(txtDatanasc.getText()); //colocar data de nascimento como string
-        cliente.setFotoCliente(txtFoto.getText());
-        cliente.setEnderecoCliente(txtEndereco.getText());
-        cliente.setEmailCliente(txtEmail.getText());
-        cliente.setSenhaCliente(txtSenha.getText());
-        ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.insert(cliente);
         
-        
-        Alert alert = new  Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setHeaderText("Cadastro realizado com sucesso!");
-        ButtonType okButton = new ButtonType("OK");
-        alert.getButtonTypes().setAll( okButton);
-        
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get()== okButton){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        String dateString = format.format(new Date());
+        if(isDateValid(txtDatanasc.getText())==true){
+            cliente.setNascimentoCliente(format.parse(txtDatanasc.getText())); //colocar data de nascimento como string
+            cliente.setFotoCliente(txtFoto.getText());
+            cliente.setEnderecoCliente(txtEndereco.getText());
+            cliente.setEmailCliente(txtEmail.getText());
+            cliente.setSenhaCliente(txtSenha.getText());
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.insert(cliente);
+
+
+            Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText("Cadastro realizado com sucesso!");
+            ButtonType okButton = new ButtonType("OK");
+            alert.getButtonTypes().setAll( okButton);
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get()== okButton){
+
+                TelaLogin telaLogin = new TelaLogin();
+                TelaCadastroCliente.getStage().close();
+                telaLogin.start(new Stage());
             
-            TelaLogin telaLogin = new TelaLogin();
-            TelaCadastroCliente.getStage().close();
-            System.out.println("FILHADA PUTA");
-            telaLogin.start(new Stage());
-            
+            }
+        } else{
+            Alert alert = new  Alert(Alert.AlertType.ERROR);
+            alert.setTitle("");
+            alert.setHeaderText("Data de nascimento inválida");
+            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll( okButton);
+
+            Optional<ButtonType> result = alert.showAndWait();
         }
         
         
         
+        
+        
+        
     }
+    public static boolean isDateValid(String strDate) {
+    String dateFormat = "dd/MM/uuuu";
 
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+    .ofPattern(dateFormat)
+    .withResolverStyle(ResolverStyle.STRICT);
+    try {
+        LocalDate date = LocalDate.parse(strDate, dateTimeFormatter);
+        return true;
+    } catch (DateTimeParseException e) {
+       return false;
+    } 
+}
+    
     @FXML
     private void btnCancelarClick(ActionEvent event) throws Exception {
         TelaLogin telaLogin = new TelaLogin();
@@ -94,7 +127,8 @@ public class TelaCadastroClienteController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        MaskFieldUtil.cpfField(txtCpf);
+        MaskFieldUtil.dateField(txtDatanasc);
     }
     
 }
